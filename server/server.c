@@ -22,21 +22,60 @@ int main()
 	
 	while (1)
 	{
-		printf("\n---------------------\n");
+		printf("---------------------\n");
 		pid_server = getpid();
 		printf("PID SERVER: %i\n", pid_server);
 		pid_client = read_pid_client();
 		printf("PID CLIENT: %i\n", pid_client);
 		len_msg = read_len();
 		printf("LEN MSG: %i\n", len_msg);
+		msg = read_msg(len_msg);
+		printf("\nLe message est : %s\n", msg);
+		if (msg)
+			free(msg);
+		usleep(50000);
+		ft_putstr_fd("PID CLIENT: ", 1);
+		ft_putnbr_fd(pid_client, 1);
+		ft_putstr_fd("\n", 1);
 		if (pid_client > 0)
 			msg_seen(pid_client);
+		// ft_putstr_fd("\n", 1);
 		// str = ft_calloc(len, 1);
 		// msg = read_message(len);
-		// printf("Le message est : %s\n", msg);
 		// free(str);
 	}
 	return(0);
+}
+
+char	*read_msg(int len)
+{
+	int		i;
+	char	*msg;
+
+	i = 0;
+	msg = ft_calloc(len + 1, 1);
+	ft_putstr_fd("READ_MSG: ", 1);
+	while (i < len)
+	{
+		msg[i] = read_char();
+		ft_putchar_fd(msg[i], 1);
+		i++;
+	}
+	return (msg);	
+}
+
+char	read_char()
+{
+	char msg;
+	int bits_number;
+
+	bits_number = 8;
+	str = ft_calloc(bits_number + 1, 1);
+	read_signal(bits_number);
+	msg = ft_binary_to_int(str, 8);
+	if (str)
+		free(str);
+	return (msg);
 }
 
 int    read_len()
@@ -46,9 +85,11 @@ int    read_len()
 	int bits_number;
 
 	bits_number = 32;
+	str = ft_calloc(bits_number + 1, 1);
 	read_signal(bits_number);
 	len = ft_binary_to_int(str, bits_number);
-	free(str);
+	if (str)
+		free(str);
 	return (len);
 }
 
@@ -58,6 +99,7 @@ int		read_pid_client()
 	int	bits_number;
 
 	bits_number = 23;
+	str = ft_calloc(bits_number + 1, 1);
 	read_signal(bits_number);
 	pid = ft_binary_to_int(str, bits_number);
 	free(str);
@@ -69,10 +111,12 @@ void	msg_seen(int pid_client)
 	int	*binary_msg;
 	int	bits_number;
 
-	printf("CLIENT MSG");
+	ft_putstr_fd("CLIENT MSG: ", 1);
 	bits_number = 32;
 	binary_msg = ft_int_to_binary(1802070889, bits_number);
 	send_signal(pid_client, binary_msg, bits_number);
+	if (binary_msg)
+		free(binary_msg);
 }
 
 void	send_signal(int pid, int *package, int bits_number)
@@ -93,7 +137,7 @@ void	send_signal(int pid, int *package, int bits_number)
 			ft_putstr_fd("0", 1);
 		}
 		i++;
-		usleep(100000);
+		usleep(50000);
 	}
 }
 
@@ -102,7 +146,6 @@ void	read_signal(int bits_number)
 	int	i;
 
 	i = 0;
-	str = ft_calloc(bits_number + 1, 1);
 	while (i < bits_number)
 	{
 		signal(SIGUSR1, handler);
@@ -110,36 +153,6 @@ void	read_signal(int bits_number)
 		i = ft_strlen(str);
 	}
 }
-
-// char    *read_message(int len)
-// {
-//     int     count;
-//     char    letter;
-//     int     i_string;
-//     char    *string;
-
-//     letter = 1;
-//     i_string = 0;
-//     string = ft_calloc(len, 1);
-//     while (letter) // letter != 0b00000000
-//     {
-//         count = 0;
-//         while (count < 8)
-//         {
-//             signal(SIGUSR1, handler);
-//             signal(SIGUSR2, handler);
-//             count = ft_strlen(str);
-//         }
-//         letter = binary_to_int(str, 8);
-//         string[i_string] = letter;
-//         printf("position str: %i\n", i_string);
-//         printf("STR: %s\n", string);
-//         i_string++;
-//         ft_putchar_fd(letter, 1);
-//         ft_bzero(str, 8);
-//     }
-//     return (string);
-// }
 
 void    handler(int sig)
 {
