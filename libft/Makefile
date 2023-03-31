@@ -6,12 +6,12 @@
 #    By: alrobert <alrobert@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/27 14:23:23 by alrobert          #+#    #+#              #
-#    Updated: 2023/02/07 14:07:21 by alrobert         ###   ########.fr        #
+#    Updated: 2023/03/31 14:24:44 by alrobert         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
-CC = gcc
+CC = clang
 SRC = ft_atoi.c \
 	ft_isdigit.c \
 	ft_memcpy.c \

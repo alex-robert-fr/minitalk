@@ -1,11 +1,18 @@
-NAME=minitalk
-CC=clang
-SRC_SERVER=	./server/server.c
-SRC_CLIENT= ./client/client.c
-LIBFT_PATH=./libft
-LIBFT_NAME=libft.a
-OBJ_SERVER=$(SRC_SERVER:.c=.o)
-OBJ_CLIENT=$(SRC_CLIENT:.c=.o)
+# ---------------------------------- PROGRAM --------------------------------- #
+NAME		=	minitalk
+# -------------------------------- COMPILATION ------------------------------- #
+CC			=	clang
+CFLAGS		=	-Werror -Wextra -Wall
+# ---------------------------------- LIBRARY --------------------------------- #
+LIBFT_PATH	=	./libft
+LIBFT_NAME	=	libft.a
+# ----------------------------------- FILES ---------------------------------- #
+SRC_SERVER	=	./server/server.c	\
+				./server/read_functions.c
+SRC_CLIENT	=	./client/client.c	\
+				./client/send_functions.c
+OBJ_SERVER	=	$(SRC_SERVER:.c=.o)
+OBJ_CLIENT	=	$(SRC_CLIENT:.c=.o)
 
 all: $(LIBFT_NAME) $(NAME)
 
@@ -15,22 +22,22 @@ $(LIBFT_NAME):
 	make -C $(LIBFT_PATH)
 
 server.out: $(LIBFT_NAME) $(OBJ_SERVER)
-	$(CC) $(OBJ_SERVER) $(LIBFT_PATH)/$(LIBFT_NAME) -o $@
+	$(CC) $(CFLAGS) $(OBJ_SERVER) $(LIBFT_PATH)/$(LIBFT_NAME) -o $@
 
 client.out: $(LIBFT_NAME) $(OBJ_CLIENT)
-	$(CC) $(OBJ_CLIENT) $(LIBFT_PATH)/$(LIBFT_NAME) -o $@
+	$(CC) $(CFLAGS) $(OBJ_CLIENT) $(LIBFT_PATH)/$(LIBFT_NAME) -o $@
 
 clean:
 	make clean -C $(LIBFT_PATH)
 	rm -f $(OBJ_SERVER) $(OBJ_CLIENT)
 
 fclean: clean
-	rm server.out client.out
+	rm -f server.out client.out
 	make fclean -C $(LIBFT_PATH)
 
 re: fclean all
 
-#!   TEMPORAIRE DEBUG   !#
+ #!   TEMPORAIRE DEBUG   !#
 debug:	dbg_server dbg_client
 
 dbg_server: $(LIBFT_NAME)
