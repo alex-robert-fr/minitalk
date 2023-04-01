@@ -23,7 +23,6 @@
 # include <stdlib.h>
 # include "../libft/libft.h"
 
-
 int		read_len(void);
 int		read_pid_client(void);
 char	*read_msg(int len);

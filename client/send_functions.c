@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "./client.h"
-/*
+
 void	send_pid(int pid_serv, int pid_client)
 {
 	int	*binary_pid;
@@ -73,4 +73,3 @@ void	send_to_server(int pid, int *package, int bit_number)
 		usleep(2);
 	}
 }
-*/

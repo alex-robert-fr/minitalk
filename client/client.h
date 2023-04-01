@@ -16,13 +16,11 @@
 # include <stdlib.h>
 # include "../libft/libft.h"
 
-static char	*g_str;
-
 void	start(char *argv[]);
 void	send_len(int pid, char *msg);
 void	send_pid(int pid_serv, int pid_client);
 void	send_msg(int pid, char *msg);
-void	read_seen_server(void);
+void	read_seen_server(int bit_number);
 void	send_to_server(int pid, int *package, int bit_number);
 void	handler(int sig);
 void	send_char(int pid, char c);
