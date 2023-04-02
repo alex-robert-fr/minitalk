@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_binary_to_int.c                                 :+:      :+:    :+:   */
+/*   flag_management.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alrobert <alrobert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/31 14:39:46 by alrobert          #+#    #+#             */
-/*   Updated: 2023/03/31 14:40:38 by alrobert         ###   ########.fr       */
+/*   Created: 2022/11/07 17:19:13 by alrobert          #+#    #+#             */
+/*   Updated: 2022/11/16 15:42:45 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
+#include "../libft.h"
 
-int	ft_binary_to_int(char *binary, int bits_number)
+int	check_flag(const char *flag, t_info_cur_arg *info)
 {
+	int	len;
 	int	i;
-	int	num;
 
+	len = 0;
 	i = 0;
-	num = 0;
-	while (binary[i])
+	info->c_margin = ' ';
+	while ((!ft_isdigit(flag[i]) || flag[i] == '0') \
+		&& (!ft_isalpha(flag[i]) && flag[i] != 37))
 	{
-		if (binary[i] == '1')
-			num |= 1 << ((bits_number - 1) - i);
+		if (flag[i] == '-')
+			info->justify_left = 1;
+		if (flag[i] == '0')
+			info->c_margin = '0';
+		if (info->justify_left || info->c_margin == '0')
+			len++;
 		i++;
 	}
-	return (num);
+	return (len);
 }

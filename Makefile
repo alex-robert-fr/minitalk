@@ -2,7 +2,7 @@
 NAME		=	minitalk
 # -------------------------------- COMPILATION ------------------------------- #
 CC			=	clang
-CFLAGS		=	-Werror -Wextra -Wall
+CFLAGS		=	-Werror -Wextra -Wall -Ilibft -Ilibft/ft_printf
 # ---------------------------------- LIBRARY --------------------------------- #
 LIBFT_PATH	=	./libft
 LIBFT_NAME	=	libft.a

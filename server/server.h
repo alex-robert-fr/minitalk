@@ -21,7 +21,6 @@
 # define T7	"------------------------------------------------------------\n"
 # include <signal.h>
 # include <stdlib.h>
-# include "../libft/libft.h"
 
 int		read_len(void);
 int		read_pid_client(void);

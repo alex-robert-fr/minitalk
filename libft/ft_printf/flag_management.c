@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_int_to_binary.c                                 :+:      :+:    :+:   */
+/*   flag_management.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alrobert <alrobert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/31 14:40:45 by alrobert          #+#    #+#             */
-/*   Updated: 2023/03/31 14:41:19 by alrobert         ###   ########.fr       */
+/*   Created: 2022/11/07 17:19:13 by alrobert          #+#    #+#             */
+/*   Updated: 2022/11/16 15:42:45 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-int	*ft_int_to_binary(int dec, int bit_number)
+int	check_flag(const char *flag, t_info_cur_arg *info)
 {
-	int	i;
-	int	*binary;
-
-	i = bit_number - 1;
-	binary = ft_calloc(bit_number + 1, sizeof(int));
-	while (dec > 0)
-	{
-		binary[i] = dec % 2;
-		dec /= 2;
-		i--;
-	}
-	return (binary);
+	(void)flag;
+	(void)info;
+	return (0);
 }

@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_int_to_binary.c                                 :+:      :+:    :+:   */
+/*   ft_nblen.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alrobert <alrobert@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alrobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/31 14:40:45 by alrobert          #+#    #+#             */
-/*   Updated: 2023/03/31 14:41:19 by alrobert         ###   ########.fr       */
+/*   Created: 2022/11/07 19:28:09 by alrobert          #+#    #+#             */
+/*   Updated: 2022/11/11 15:23:11 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	*ft_int_to_binary(int dec, int bit_number)
+size_t	ft_nblen(long nb)
 {
 	int	i;
-	int	*binary;
 
-	i = bit_number - 1;
-	binary = ft_calloc(bit_number + 1, sizeof(int));
-	while (dec > 0)
+	i = 0;
+	if (nb < 0)
 	{
-		binary[i] = dec % 2;
-		dec /= 2;
-		i--;
+		nb *= -1;
+		i++;
 	}
-	return (binary);
+	if (!nb)
+		i++;
+	while (nb)
+	{
+		nb /= 10;
+		i++;
+	}
+	return (i);
 }

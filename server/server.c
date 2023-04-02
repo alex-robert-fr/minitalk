@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "server.h"
+#include "libft.h"
+#include "ft_printf.h"
 
 void	minitalk(void)
 {
@@ -32,20 +34,14 @@ int	main(void)
 
 	minitalk();
 	pid_server = getpid();
-	ft_putstr_fd("PID SERVER: ", 1);
-	ft_putnbr_fd(pid_server, 1);
-	ft_putchar_fd('\n', 1);
+	ft_printf("PID SERVER: %i\n", pid_server);
 	ft_putstr_fd(T7, 1);
 	while (1)
 	{
 		pid_client = read_pid_client();
 		len_msg = read_len();
 		msg = read_msg(len_msg);
-		ft_putstr_fd("user_", 1);
-		ft_putnbr_fd(pid_client, 1);
-		ft_putstr_fd(": ", 1);
-		ft_putstr_fd(msg, 1);
-		ft_putchar_fd('\n', 1);
+		ft_printf("user_%i: %s\n", pid_client, msg);
 		if (msg)
 			free(msg);
 		usleep(30);

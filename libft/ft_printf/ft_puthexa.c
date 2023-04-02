@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_int_to_binary.c                                 :+:      :+:    :+:   */
+/*   ft_puthexa.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alrobert <alrobert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/31 14:40:45 by alrobert          #+#    #+#             */
-/*   Updated: 2023/03/31 14:41:19 by alrobert         ###   ########.fr       */
+/*   Created: 2022/10/31 19:09:07 by alrobert          #+#    #+#             */
+/*   Updated: 2022/11/11 17:47:18 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
+#include "../libft.h"
 
-int	*ft_int_to_binary(int dec, int bit_number)
+void	ft_puthexa(unsigned long nbr, int is_maj_or_min)
 {
-	int	i;
-	int	*binary;
+	int	out;
 
-	i = bit_number - 1;
-	binary = ft_calloc(bit_number + 1, sizeof(int));
-	while (dec > 0)
-	{
-		binary[i] = dec % 2;
-		dec /= 2;
-		i--;
-	}
-	return (binary);
+	if (nbr >= 16)
+		ft_puthexa(nbr / 16, is_maj_or_min);
+	out = nbr % 16;
+	if (out < 10)
+		ft_putnbr_fd(out, 1);
+	else
+		ft_putchar_fd(out + (is_maj_or_min - 10), 1);
 }

@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_int_to_binary.c                                 :+:      :+:    :+:   */
+/*   ft_memlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alrobert <alrobert@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alrobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/31 14:40:45 by alrobert          #+#    #+#             */
-/*   Updated: 2023/03/31 14:41:19 by alrobert         ###   ########.fr       */
+/*   Created: 2022/11/10 17:09:29 by alrobert          #+#    #+#             */
+/*   Updated: 2022/11/11 17:49:42 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	*ft_int_to_binary(int dec, int bit_number)
+size_t	ft_memlen(unsigned long nbr)
 {
 	int	i;
-	int	*binary;
 
-	i = bit_number - 1;
-	binary = ft_calloc(bit_number + 1, sizeof(int));
-	while (dec > 0)
+	i = 0;
+	if (!nbr)
+		i++;
+	while (nbr >= 16)
 	{
-		binary[i] = dec % 2;
-		dec /= 2;
-		i--;
+		nbr /= 16;
+		i++;
 	}
-	return (binary);
+	if (nbr > 0)
+		i++;
+	return (i);
 }
