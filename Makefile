@@ -4,7 +4,7 @@ SERVER_NAME	=	server
 CLIENT_NAME	=	client
 # -------------------------------- COMPILATION ------------------------------- #
 CC			=	clang
-CFLAGS		=	-Werror -Wextra -Wall -Ilibft -Ilibft/ft_printf
+CFLAGS		=	-Werror -Wextra -Wall -Ilibft/includes -Ilibft/includes/ft_printf
 # ---------------------------------- LIBRARY --------------------------------- #
 LIBFT_PATH	=	./libft
 LIBFT_NAME	=	libft.a

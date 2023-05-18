@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "./client.h"
+# include <signal.h>
+# include "libft.h"
 
 static char	*g_str;
 

@@ -12,9 +12,6 @@
 
 #ifndef CLIENT_H
 # define CLIENT_H
-# include <signal.h>
-# include <stdlib.h>
-# include "../libft/libft.h"
 
 void	start(char *argv[]);
 void	send_len(int pid, char *msg);

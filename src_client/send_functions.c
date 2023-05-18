@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "./client.h"
+# include <signal.h>
+# include "libft.h"
 
 void	send_pid(int pid_serv, int pid_client)
 {

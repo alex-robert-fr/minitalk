@@ -19,8 +19,6 @@
 # define T5	"██║ ╚═╝ ██║██║██║ ╚████║██║   ██║   ██║  ██║███████╗██║  ██╗\n"
 # define T6	"╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝\n"
 # define T7	"------------------------------------------------------------\n"
-# include <signal.h>
-# include <stdlib.h>
 
 int		read_len(void);
 int		read_pid_client(void);
