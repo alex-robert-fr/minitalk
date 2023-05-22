@@ -6,13 +6,13 @@
 /*   By: alrobert <alrobert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 14:47:27 by alrobert          #+#    #+#             */
-/*   Updated: 2023/03/31 14:51:15 by alrobert         ###   ########.fr       */
+/*   Updated: 2023/05/22 11:48:56 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./client.h"
-# include <signal.h>
-# include "libft.h"
+#include <signal.h>
+#include "libft.h"
 
 void	send_pid(int pid_serv, int pid_client)
 {

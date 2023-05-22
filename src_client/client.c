@@ -6,13 +6,13 @@
 /*   By: alrobert <alrobert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 17:53:43 by alrobert          #+#    #+#             */
-/*   Updated: 2023/03/31 16:42:01 by alrobert         ###   ########.fr       */
+/*   Updated: 2023/05/22 11:48:50 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./client.h"
-# include <signal.h>
-# include "libft.h"
+#include <signal.h>
+#include "libft.h"
 
 static char	*g_str;
 
